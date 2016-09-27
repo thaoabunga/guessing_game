@@ -8,7 +8,7 @@ def game():
     name = raw_input("----->")
 
     chosen_number = random.randint(1,100)
-    print chosen_number
+    #print chosen_number
     count = 0
     while True:
 
@@ -40,10 +40,11 @@ def game():
         elif guess > chosen_number:
             count = count + 1
             print "Guess a lower number than %d" % guess
-            print count
+            
 
         else:
             count = count + 1
             print "Guess a higher number than %d." % guess
-            print count
+        
+            
 game()
