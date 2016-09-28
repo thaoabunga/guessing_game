@@ -1,7 +1,7 @@
 # Put your code here
 import random
 
-def game():
+def game(old_score):
 
     print "Hello, welcome to our number guessing game!"
     print "What's your name?" 
@@ -10,7 +10,11 @@ def game():
     chosen_number = random.randint(1,100)
     #print chosen_number
     count = 0
+    prev_score = old_score
+ 
+
     while True:
+        
 
   
         try:
@@ -25,13 +29,20 @@ def game():
 
         elif chosen_number == guess:
             count = count + 1
-
             print "Congratulations, you guessed the correct number! You've guessed in %d tries!" % count
+
+            if prev_score == 0:
+                print "Your new score is: %d" % count
+            elif count > prev_score:
+                print "Your best score is: %d" % prev_score 
+            elif count <= prev_score:
+                print "Your best score is: %d" % count       
 
             print "Do you want to play another game? yes/no: "
             response = raw_input(">>>>>" )
             if response.lower() == "yes":
-                game()
+                game(count)
+
             elif response.lower() == "no":
                 break
             else:
@@ -47,4 +58,4 @@ def game():
             print "Guess a higher number than %d." % guess
         
             
-game()
+game(0)
